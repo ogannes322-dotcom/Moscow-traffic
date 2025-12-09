@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>"@0=A?>@B=K5 ?>B5@8 >A:2K  N;L 2025</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #ffffff;
+        color: #333;
+    }
+
+    header {
+        background: #ff8c00;
+        padding: 25px;
+        text-align: center;
+        color: white;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .container {
+        max-width: 750px;
+        margin: 35px auto;
+        padding: 20px;
+    }
+
+    .btns {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 25px;
+        justify-content: center;
+    }
+
+    .btns button {
+        padding: 10px 18px;
+        border: none;
+        background: #ff8c00;
+        color: white;
+        font-size: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .btns button:hover {
+        background: #ff6a00;
+    }
+
+    .card {
+        background: #fff7ef;
+        border-left: 7px solid #ff8c00;
+        padding: 20px;
+        border-radius: 12px;
+        font-size: 18px;
+        line-height: 1.5;
+        opacity: 0;
+        transform: translateY(15px);
+        transition: 0.4s ease;
+        min-height: 140px;
+    }
+
+    .card.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .loadBar {
+        width: 100%;
+        height: 12px;
+        background: #ffe1c4;
+        border-radius: 6px;
+        margin-top: 20px;
+        overflow: hidden;
+    }
+
+    .loadBarFill {
+        height: 100%;
+        width: 0;
+        background: #ff8c00;
+        transition: width 0.6s ease;
+    }
+
+    .fact, .source {
+        margin-top: 30px;
+        background: #fff3e2;
+        border-left: 7px solid #ff8c00;
+        padding: 18px;
+        border-radius: 12px;
+        font-size: 17px;
+    }
+
+    .carBox {
+        margin-top: 40px;
+        position: relative;
+        height: 55px;
+        background: #f6f6f6;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .car {
+        position: absolute;
+        top: 10px;
+        left: -80px;
+        width: 70px;
+        height: 35px;
+        background: #ff8c00;
+        border-radius: 8px;
+        animation: drive 4s linear infinite;
+    }
+
+    @keyframes drive {
+        from { left: -100px; }
+        to { left: 100%; }
+    }
+</style>
+</head>
+
+<body>
+
+<header>"@0=A?>@B=K5 ?>B5@8 >A:2K  N;L 2025</header>
+
+<div class="container">
+
+    <div class="btns">
+        <button onclick="showDay('mon')">>=545;L=8:</button>
+        <button onclick="showDay('tue')">B>@=8:</button>
+        <button onclick="showDay('wed')">!@540</button>
+        <button onclick="showDay('thu')">'5B25@3</button>
+        <button onclick="showDay('fri')">OB=8F0</button>
+        <button onclick="showDay('sat')">!C11>B0</button>
+        <button onclick="showDay('sun')">>A:@5A5=L5</button>
+    </div>
+
+    <div id="card" class="card"></div>
+
+    <div class="loadBar">
+        <div id="loadFill" class="loadBarFill"></div>
+    </div>
+
+    <div class="carBox">
+        <div class="car"></div>
+    </div>
+
+    <div class="fact">
+        =B5@5A=K9 D0:B:  
+         8N;5 :>;8G5AB2> ?>574>: ?> >A:25 C25;8G8205BAO 87-70 40G=>3> A57>=0, GB> ?@82>48B : @>ABC ?@>1>: =0 2K5740E 87 3>@>40.
+    </div>
+
+    <div class="source">
+        A?>;L7>20==K5 8AB>G=8:8 40==KE:  
+        TomTom Traffic Index, /=45:A.@>1:8, @0AGQBK A@54=59 703@C65==>AB8 8 2@5<5=8 ?>574>: ?> >A:25.
+    </div>
+
+</div>
+
+<script>
+const data = {
+    mon: { load: 2.6, fuel: "305 ;", money: "145 <;= ½", note: "0G0;> @01>G59 =545;8" },
+    tue: { load: 2.4, fuel: "282 ;", money: "133 <;= ½", note: " 53C;O@=K5 ?>574:8" },
+    wed: { load: 2.3, fuel: "271 ;", money: "126 <;= ½", note: "!5@548=0 =545;8" },
+    thu: { load: 2.5, fuel: "295 ;", money: "138 <;= ½", note: " >AB ?>574>: : 2KE>4=K<" },
+    fri: { load: 2.8, fuel: "330 ;", money: "152 <;= ½", note: "K574K 70 3>@>4" },
+    sat: { load: 2.6, fuel: "307 ;", money: "140 <;= ½", note: ">574:8 =0 >B4KE" },
+    sun: { load: 2.9, fuel: "356 ;", money: "168 <;= ½", note: ">72@0I5=85 A 40G" }
+};
+
+function showDay(d) {
+    const block = document.getElementById("card");
+    const info = data[d];
+
+    block.innerHTML = `
+        <b>03@C65==>ABL:</b> ${info.load}<br>
+        <b>"@0B0 B>?;820:</b> ${info.fuel}<br>
+        <b>$8=0=A>2K5 ?>B5@8:</b> ${info.money}<br>
+        <b>A>15==>ABL 4=O:</b> ${info.note}
+    `;
+
+    block.classList.remove("show");
+    setTimeout(() => block.classList.add("show"), 30);
+
+    const bar = document.getElementById("loadFill");
+    bar.style.width = (info.load / 3.0 * 100) + "%";
+}
+</script>
+
+</body>
+</html>
